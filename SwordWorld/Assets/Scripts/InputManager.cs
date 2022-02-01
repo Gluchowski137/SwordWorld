@@ -8,15 +8,26 @@ public class InputManager : MonoBehaviour
     private PlayerInput.OnFootActions onFoot;
     private PlayerMotor motor;
     private PlayerLook look;
+    private PlayerAttack attack;
+    
     // Start is called before the first frame update
     void Awake()
     {
+        Cursor.lockState = CursorLockMode.Locked;
         playerInput = new PlayerInput();
         onFoot = playerInput.OnFoot;
         motor = GetComponent<PlayerMotor>();
         look = GetComponent<PlayerLook>();
+        attack = GetComponent<PlayerAttack>();
         onFoot.Jump.performed += ctx => motor.Jump();
         onFoot.Sprint.performed += ctx => motor.Sprint();
+        onFoot.Attack.performed += ctx => attack.NormalAttack();
+    }
+
+
+    private void Update()
+    {
+        
     }
 
     // Update is called once per frame
