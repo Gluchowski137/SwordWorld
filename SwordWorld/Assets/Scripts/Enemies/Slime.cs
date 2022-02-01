@@ -9,18 +9,20 @@ public class Slime : MonoBehaviour, IEnemy
     public HealthBar healthbar;
     public GameObject explosion;
     private float explosionTime;
+    private GameObject audioManager;
+    private AudioManager audio;    
     void Start()
     {
+        audioManager = GameObject.Find("AudioManager");
+        audio =   audioManager.GetComponent<AudioManager>();
         currenthealth = maxhealth;
         healthbar.SetMaxHEalth(maxhealth);
         explosionTime = explosion.GetComponentInChildren<ParticleSystem>().main.duration;
     }
     void Die()
     {
-        GameObject explode = Instantiate(explosion, gameObject.transform.position, gameObject.transform.rotation);
+        Explode();
         Destroy(gameObject);
-        Destroy(explode,explosionTime);
-
     }
 
     public void TakeDamage(int amount)
@@ -31,5 +33,12 @@ public class Slime : MonoBehaviour, IEnemy
         {
             Die();
         }
+    }
+
+    public void Explode()
+    {
+        audio.PlayExplodeSound();
+        GameObject explode = Instantiate(explosion, gameObject.transform.position, gameObject.transform.rotation);
+        Destroy(explode, explosionTime);
     }
 }
