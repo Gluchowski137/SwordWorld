@@ -4,10 +4,15 @@ using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
 {
-    public Sword sword;
+    
+    private GameObject spearGameOBject;
+
+    private GetWeapon weapon;
     // Start is called before the first frame update
     void Start()
     {
+        weapon = GetComponentInChildren<GetWeapon>();
+
     }
 
     // Update is called once per frame
@@ -17,7 +22,21 @@ public class PlayerAttack : MonoBehaviour
     }
     public void NormalAttack()
     {
-        sword.PerformAttack();
+        if (weapon.isSword == true)
+        {
+            Debug.Log("I have Sword");
+            weapon.sword.PerformAttack();
+        }
+        else if (weapon.isSpear == true)
+        {
+            Debug.Log("I have Spear");
+            weapon.spear.PerformAttack();
+        }
+        else
+        {
+            Debug.Log("I dont have weapon");
+        }
+        
     }
 }
 

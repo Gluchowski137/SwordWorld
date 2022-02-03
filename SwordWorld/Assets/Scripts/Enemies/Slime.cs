@@ -10,7 +10,7 @@ public class Slime : MonoBehaviour, IEnemy
     public GameObject explosion;
     private float explosionTime;
     private GameObject audioManager;
-    private AudioManager audio;    
+    private AudioManager audio;
     void Start()
     {
         audioManager = GameObject.Find("AudioManager");

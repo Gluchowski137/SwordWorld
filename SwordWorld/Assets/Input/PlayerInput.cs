@@ -71,6 +71,15 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""GetWeapon"",
+                    ""type"": ""Button"",
+                    ""id"": ""1211be62-71d6-4df8-8620-e8ad3660fb80"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -271,6 +280,28 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""action"": ""Attack"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f21aedda-d88e-4f00-9e7d-e12d2d055196"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""GetWeapon"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a6ed7177-de8d-4177-bee8-6525edbae147"",
+                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""GetWeapon"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -284,6 +315,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         m_OnFoot_Look = m_OnFoot.FindAction("Look", throwIfNotFound: true);
         m_OnFoot_Sprint = m_OnFoot.FindAction("Sprint", throwIfNotFound: true);
         m_OnFoot_Attack = m_OnFoot.FindAction("Attack", throwIfNotFound: true);
+        m_OnFoot_GetWeapon = m_OnFoot.FindAction("GetWeapon", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -348,6 +380,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
     private readonly InputAction m_OnFoot_Look;
     private readonly InputAction m_OnFoot_Sprint;
     private readonly InputAction m_OnFoot_Attack;
+    private readonly InputAction m_OnFoot_GetWeapon;
     public struct OnFootActions
     {
         private @PlayerInput m_Wrapper;
@@ -357,6 +390,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         public InputAction @Look => m_Wrapper.m_OnFoot_Look;
         public InputAction @Sprint => m_Wrapper.m_OnFoot_Sprint;
         public InputAction @Attack => m_Wrapper.m_OnFoot_Attack;
+        public InputAction @GetWeapon => m_Wrapper.m_OnFoot_GetWeapon;
         public InputActionMap Get() { return m_Wrapper.m_OnFoot; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -381,6 +415,9 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                 @Attack.started -= m_Wrapper.m_OnFootActionsCallbackInterface.OnAttack;
                 @Attack.performed -= m_Wrapper.m_OnFootActionsCallbackInterface.OnAttack;
                 @Attack.canceled -= m_Wrapper.m_OnFootActionsCallbackInterface.OnAttack;
+                @GetWeapon.started -= m_Wrapper.m_OnFootActionsCallbackInterface.OnGetWeapon;
+                @GetWeapon.performed -= m_Wrapper.m_OnFootActionsCallbackInterface.OnGetWeapon;
+                @GetWeapon.canceled -= m_Wrapper.m_OnFootActionsCallbackInterface.OnGetWeapon;
             }
             m_Wrapper.m_OnFootActionsCallbackInterface = instance;
             if (instance != null)
@@ -400,6 +437,9 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                 @Attack.started += instance.OnAttack;
                 @Attack.performed += instance.OnAttack;
                 @Attack.canceled += instance.OnAttack;
+                @GetWeapon.started += instance.OnGetWeapon;
+                @GetWeapon.performed += instance.OnGetWeapon;
+                @GetWeapon.canceled += instance.OnGetWeapon;
             }
         }
     }
@@ -411,5 +451,6 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         void OnLook(InputAction.CallbackContext context);
         void OnSprint(InputAction.CallbackContext context);
         void OnAttack(InputAction.CallbackContext context);
+        void OnGetWeapon(InputAction.CallbackContext context);
     }
 }
