@@ -22,7 +22,7 @@ public class PlayerAttack : MonoBehaviour
     }
     public void NormalAttack()
     {
-        if (weapon.isSword == true)
+        if (weapon.isSwordAndShield == true)
         {
             Debug.Log("I have Sword");
             weapon.sword.PerformAttack();
@@ -37,6 +37,20 @@ public class PlayerAttack : MonoBehaviour
             Debug.Log("I dont have weapon");
         }
         
+    }
+    public void UpShield()
+    {
+        if (weapon.isSwordAndShield == true)
+        {
+            weapon.shield.DoBLock();
+        }
+    }
+    public void DownShield()
+    {
+        if (weapon.isSwordAndShield == true)
+        {
+            weapon.shield.UnBLock();
+        }
     }
 }
 

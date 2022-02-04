@@ -5,12 +5,19 @@ using UnityEngine.UI;
 
 public class GetWeapon : MonoBehaviour
 {
+    private Animator armsAnimator;
+
     private GameObject swordGameOBject;
     private GameObject spearGameOBject;
+    private GameObject shieldGameOBject;
+
     private GameObject canvas;
+
     private GameObject closestHandler;
+
     private GameObject swordInHand;
     private GameObject spearInHand;
+    private GameObject shieldInHand;
 
     private Text getWeaponText;
 
@@ -21,17 +28,24 @@ public class GetWeapon : MonoBehaviour
 
     public GameObject swordPrefab;
     public GameObject spearPrefab;
+    public GameObject shieldPrefab;
 
-    public bool isSword = false;
+    public GameObject shieldPlace;
+    public GameObject swordPlace;
+    public GameObject spearPlace;
+
+    public bool isSwordAndShield = false;
     public bool isSpear = false;
 
     public Sword sword;
     public Spear spear;
+    public Shield shield;
 
-    
+
 
     private void Start()
     {
+        armsAnimator = GetComponentInChildren<Animator>();
         weaponHolders = GameObject.FindGameObjectsWithTag("WeaponHolder");
         canvas = GameObject.Find("UI");
         getWeaponText = canvas.GetComponentInChildren<Text>();
@@ -74,6 +88,9 @@ public class GetWeapon : MonoBehaviour
         if (closeHolders > 0 && (closestHandler.name == "SwordHandler" || closestHandler.name == "SwordHandler2"))
         {
             GetSwordToHand();
+            armsAnimator.SetTrigger("GetSword");
+            Debug.Log("SWord");
+            
         }
         if (closeHolders > 0 && (closestHandler.name == "SpearHandler" || closestHandler.name == "SpearHandler2"))
         {
@@ -87,17 +104,20 @@ public class GetWeapon : MonoBehaviour
     }
     void GetSwordToHand()
     {
-        if (!isSword)
+        if (!isSwordAndShield)
         {
             if (isSpear)
             {
                 Destroy(spearInHand);    
             }
-            swordInHand = Instantiate(swordPrefab, gameObject.transform);
-            isSword = true;
+            swordInHand = Instantiate(swordPrefab, swordPlace.transform);
+            shieldInHand = Instantiate(shieldPrefab, shieldPlace.transform);
+            isSwordAndShield = true;
             isSpear = false;
             swordGameOBject = GameObject.FindWithTag("Sword");
             sword = swordGameOBject.GetComponent<Sword>();
+            shieldGameOBject = GameObject.FindWithTag("Shield");
+            shield = shieldGameOBject.GetComponent<Shield>();
 
         }
         
@@ -107,13 +127,14 @@ public class GetWeapon : MonoBehaviour
 
         if (!isSpear)
         {
-            if (isSword)
+            if (isSwordAndShield)
             {
                 Destroy(swordInHand);
+                Destroy(shieldInHand);
             }
-            spearInHand = Instantiate(spearPrefab, gameObject.transform);
+            spearInHand = Instantiate(spearPrefab, spearPlace.transform);
             isSpear = true;
-            isSword = false;
+            isSwordAndShield = false;
             spearGameOBject = GameObject.FindWithTag("Spear");
             spear = spearGameOBject.GetComponent<Spear>();
         }

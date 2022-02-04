@@ -8,6 +8,8 @@ TagManager:
   - Enemy
   - Spear
   - WeaponHolder
+  - Shield
+  - PlayerArms
   layers:
   - Default
   - TransparentFX

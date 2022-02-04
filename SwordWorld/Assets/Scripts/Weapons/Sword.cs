@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class Sword : MonoBehaviour
 {
+    private Animator armsAnimator;
     private Animator animator;
+    private GameObject humanFps;
     private GameObject audioManager;
     private AudioManager audio;
 
@@ -14,12 +16,14 @@ public class Sword : MonoBehaviour
         audioManager = GameObject.Find("AudioManager");
         audio = audioManager.GetComponent<AudioManager>();
         animator = GetComponent<Animator>();
+        humanFps = GameObject.Find("HumanFPS");
+        armsAnimator = humanFps.GetComponent<Animator>();
     }
 
-    public void PerformAttack()
+    public void PerformAttack() 
     {
         audio.PlayAttackSound();
-        animator.SetTrigger("BasicAttack");
+        armsAnimator.SetTrigger("BasicAttack");
         
     }
 
