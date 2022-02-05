@@ -1,17 +1,11 @@
 fileFormatVersion: 2
-guid: 809b63ae9af8d5b4fa91e354ea73a770
+guid: d25b5e41eb07e994891821e1e9d07be1
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable:
   - first:
-      74: 3457080199410827831
-    second: SwordArmature|CubeAction
-  - first:
-      74: -6645165285947501048
-    second: SwordArmature|SwordAction
-  - first:
-      74: 7314914905595051267
-    second: SwordUp
+      74: 2685543445418034836
+    second: SpearGet
   externalObjects: {}
   materials:
     materialImportMode: 0
@@ -41,8 +35,8 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: SwordUp
-      takeName: SwordArmature|SwordWithShieldUp
+      name: SpearGet
+      takeName: HumanFPS|SpearGet
       internalID: 0
       firstFrame: 0
       lastFrame: 24
@@ -65,8 +59,8 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0.21293195
-        functionName: InstantiateSword
+      - time: 0.08247422
+        functionName: InstantiateSpear
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0

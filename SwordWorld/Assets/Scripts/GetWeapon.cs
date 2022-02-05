@@ -15,9 +15,9 @@ public class GetWeapon : MonoBehaviour
 
     private GameObject closestHandler;
 
-    private GameObject swordInHand;
-    private GameObject spearInHand;
-    private GameObject shieldInHand;
+    public GameObject swordInHand;
+    public GameObject spearInHand;
+    public GameObject shieldInHand;
 
     private Text getWeaponText;
 
@@ -87,14 +87,28 @@ public class GetWeapon : MonoBehaviour
     {
         if (closeHolders > 0 && (closestHandler.name == "SwordHandler" || closestHandler.name == "SwordHandler2"))
         {
-            GetSwordToHand();
-            armsAnimator.SetTrigger("GetSword");
-            Debug.Log("SWord");
+            if (isSpear)
+            {
+                armsAnimator.SetTrigger("LeaveSpear");
+            }
+
+            if (!isSwordAndShield)
+            {
+                armsAnimator.SetTrigger("GetSword");
+            }
             
         }
         if (closeHolders > 0 && (closestHandler.name == "SpearHandler" || closestHandler.name == "SpearHandler2"))
         {
-            GetSpearToHand();
+            if (isSwordAndShield)
+            {
+                armsAnimator.SetTrigger("LeaveSword");
+            }
+            if (!isSpear)
+            {
+                armsAnimator.SetTrigger("GetSpear");
+            }
+
         }
         else
         {
@@ -102,43 +116,29 @@ public class GetWeapon : MonoBehaviour
         }
            
     }
-    void GetSwordToHand()
+    public void GetSwordToHand()
     {
-        if (!isSwordAndShield)
-        {
-            if (isSpear)
-            {
-                Destroy(spearInHand);    
-            }
             swordInHand = Instantiate(swordPrefab, swordPlace.transform);
             shieldInHand = Instantiate(shieldPrefab, shieldPlace.transform);
             isSwordAndShield = true;
-            isSpear = false;
-            swordGameOBject = GameObject.FindWithTag("Sword");
-            sword = swordGameOBject.GetComponent<Sword>();
             shieldGameOBject = GameObject.FindWithTag("Shield");
             shield = shieldGameOBject.GetComponent<Shield>();
-
-        }
-        
+            swordGameOBject = GameObject.FindWithTag("Sword");
+            sword = swordGameOBject.GetComponent<Sword>();                
     }
-    void GetSpearToHand()
+    public void GetSpearToHand()
     {
+        spearInHand = Instantiate(spearPrefab, spearPlace.transform);
+        isSpear = true;
+        spearGameOBject = GameObject.FindWithTag("Spear");
+        spear = spearGameOBject.GetComponent<Spear>();
+    }
 
-        if (!isSpear)
-        {
-            if (isSwordAndShield)
-            {
-                Destroy(swordInHand);
-                Destroy(shieldInHand);
-            }
-            spearInHand = Instantiate(spearPrefab, spearPlace.transform);
-            isSpear = true;
-            isSwordAndShield = false;
-            spearGameOBject = GameObject.FindWithTag("Spear");
-            spear = spearGameOBject.GetComponent<Spear>();
-        }
-        
+
+    public void DestroyWeapons()
+    {
+        isSwordAndShield = false;
+        isSpear = false;
     }
 }
 

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4938726098798402974}
   - component: {fileID: 3708825563893526404}
   - component: {fileID: 7889597768195595550}
+  - component: {fileID: 3006200089152643714}
   m_Layer: 0
   m_Name: SpearGrip
   m_TagString: Spear
@@ -26,9 +27,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1467632462440451614}
-  m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0.6330923, y: 2.2119622, z: -1.1088127}
-  m_LocalScale: {x: 3, y: 3, z: 3}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2137755229500591347}
   m_Father: {fileID: 0}
@@ -95,6 +96,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d15445ea232e58a49971ce79275941ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!65 &3006200089152643714
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1467632462440451614}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.35908127, y: 0.1503425, z: 0.3671012}
+  m_Center: {x: -0.002639711, y: 0.021152128, z: 1.1141357}
 --- !u!1 &8569620096418592523
 GameObject:
   m_ObjectHideFlags: 0
@@ -120,8 +134,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8569620096418592523}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.0000004172325, y: -0.00000011920929, z: 1.0353584}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4466532892891025014}

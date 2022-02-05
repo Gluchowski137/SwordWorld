@@ -25,8 +25,7 @@ public class InputManager : MonoBehaviour
         onFoot.Sprint.performed += ctx => motor.Sprint();
         onFoot.Attack.performed += ctx => attack.NormalAttack();
         onFoot.GetWeapon.performed += ctx => weapon.GetWeaponToHand();
-        onFoot.Block.started += ctx => attack.UpShield();
-        onFoot.Block.canceled += ctx => attack.DownShield();
+        onFoot.Block.performed += ctx => attack.Shield();
         
     }
 

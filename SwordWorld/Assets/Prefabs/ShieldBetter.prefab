@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 9116356207468813438}
   - component: {fileID: 4046710368267484523}
   - component: {fileID: 5274283906844161847}
+  - component: {fileID: 4179576768741159189}
   m_Layer: 0
   m_Name: ShieldBetter
   m_TagString: Shield
@@ -29,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 7314745039244279211}
   m_LocalRotation: {x: -0.5, y: -0.5, z: -0.5, w: 0.5}
   m_LocalPosition: {x: 0.023, y: 0.12, z: 0}
-  m_LocalScale: {x: 0.2, y: 0.4, z: 0.4}
+  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -116,5 +117,17 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.5720166, y: 2.0000002, z: 2.8807416}
-  m_Center: {x: -0.061172493, y: 0.01300059, z: -0.27611104}
+  m_Size: {x: 0.5720166, y: 4.1614037, z: 4.836058}
+  m_Center: {x: -0.061172508, y: -0.01565352, z: -0.044119805}
+--- !u!114 &4179576768741159189
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7314745039244279211}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f66d60a56b85e934688f8ff3ce188d2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

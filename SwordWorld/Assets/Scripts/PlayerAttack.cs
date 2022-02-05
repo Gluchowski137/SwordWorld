@@ -5,8 +5,7 @@ using UnityEngine;
 public class PlayerAttack : MonoBehaviour
 {
     
-    private GameObject spearGameOBject;
-
+    public bool isBlock = false;
     private GetWeapon weapon;
     // Start is called before the first frame update
     void Start()
@@ -24,12 +23,10 @@ public class PlayerAttack : MonoBehaviour
     {
         if (weapon.isSwordAndShield == true)
         {
-            Debug.Log("I have Sword");
             weapon.sword.PerformAttack();
         }
         else if (weapon.isSpear == true)
         {
-            Debug.Log("I have Spear");
             weapon.spear.PerformAttack();
         }
         else
@@ -38,18 +35,12 @@ public class PlayerAttack : MonoBehaviour
         }
         
     }
-    public void UpShield()
+    public void Shield()
     {
         if (weapon.isSwordAndShield == true)
         {
-            weapon.shield.DoBLock();
-        }
-    }
-    public void DownShield()
-    {
-        if (weapon.isSwordAndShield == true)
-        {
-            weapon.shield.UnBLock();
+            isBlock = !isBlock;
+            weapon.shield.Block(isBlock);
         }
     }
 }

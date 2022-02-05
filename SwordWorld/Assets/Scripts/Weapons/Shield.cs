@@ -6,18 +6,34 @@ public class Shield : MonoBehaviour
 {
     private GameObject humanFps;
     private Animator armsAnimator;
+    private BoxCollider collider;
     private void Start()
     {
         humanFps = GameObject.Find("HumanFPS");
         armsAnimator = humanFps.GetComponent<Animator>();
+        collider = GetComponent<BoxCollider>();
+        collider.enabled = false;
     }
     // Start is called before the first frame update
-    public void DoBLock()
+    public void Block(bool isBlock)
     {
-        armsAnimator.SetBool("Blocking",true);
+        if (isBlock)
+        {
+            armsAnimator.SetBool("Blocking", true);
+
+        }
+        else
+        {
+            armsAnimator.SetBool("Blocking", false);
+        }
+        
     }
-    public void UnBLock()
+    public void EnableCollider()
     {
-        armsAnimator.SetBool("Blocking", false);
+        collider.enabled = true;
+    }
+    public void DIsableCollider()
+    {
+        collider.enabled = false;
     }
 }
