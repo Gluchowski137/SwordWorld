@@ -14,11 +14,6 @@ public class PlayerAttack : MonoBehaviour
 
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     public void NormalAttack()
     {
         if (weapon.isSwordAndShield == true)
@@ -28,10 +23,6 @@ public class PlayerAttack : MonoBehaviour
         else if (weapon.isSpear == true)
         {
             weapon.spear.PerformAttack();
-        }
-        else
-        {
-            Debug.Log("I dont have weapon");
         }
         
     }

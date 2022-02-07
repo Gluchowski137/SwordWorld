@@ -8,14 +8,14 @@ public class Spear : MonoBehaviour
     private Animator armsAnimator;
     private Animator animator;
     private GameObject humanFps;
-    private BoxCollider collider;
+    private BoxCollider spearCollider;
 
     private void Start()
     {
         humanFps = GameObject.Find("HumanFPS");
         armsAnimator = humanFps.GetComponent<Animator>();
-        collider = GetComponent<BoxCollider>();
-        collider.enabled = false;
+        spearCollider = GetComponent<BoxCollider>();
+        spearCollider.enabled = false;
     }
     public void PerformAttack()
     {
@@ -31,10 +31,10 @@ public class Spear : MonoBehaviour
     }
     public void EnableCollider()
     {
-        collider.enabled = true;
+        spearCollider.enabled = true;
     }
     public void DIsableCollider()
     {
-        collider.enabled = false;
+        spearCollider.enabled = false;
     }
 }

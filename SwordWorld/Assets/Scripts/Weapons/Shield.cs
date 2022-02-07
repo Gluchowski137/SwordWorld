@@ -6,13 +6,13 @@ public class Shield : MonoBehaviour
 {
     private GameObject humanFps;
     private Animator armsAnimator;
-    private BoxCollider collider;
+    private BoxCollider shieldCollider;
     private void Start()
     {
         humanFps = GameObject.Find("HumanFPS");
         armsAnimator = humanFps.GetComponent<Animator>();
-        collider = GetComponent<BoxCollider>();
-        collider.enabled = false;
+        shieldCollider = GetComponent<BoxCollider>();
+        shieldCollider.enabled = false;
     }
     // Start is called before the first frame update
     public void Block(bool isBlock)
@@ -30,10 +30,10 @@ public class Shield : MonoBehaviour
     }
     public void EnableCollider()
     {
-        collider.enabled = true;
+        shieldCollider.enabled = true;
     }
     public void DIsableCollider()
     {
-        collider.enabled = false;
+        shieldCollider.enabled = false;
     }
 }

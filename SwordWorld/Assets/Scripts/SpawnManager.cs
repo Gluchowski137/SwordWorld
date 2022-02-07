@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
 {
-    // Start is called before the first frame update
     public GameObject[] eniemiesPrefab;
     private int countEnemies;
     private int waveNumber = 3;
@@ -70,23 +69,23 @@ public class SpawnManager : MonoBehaviour
         int spawnManagerIndex = Random.Range(0, 4);
         if(spawnManagerIndex == 0)
         {
-            Debug.Log("1");
+           
             spawn = SpawnManager1();
         }
         else if (spawnManagerIndex == 1)
         {
-            Debug.Log("2");
+            
             spawn = SpawnManager2();
 
         }
         else if (spawnManagerIndex == 2)
         {
-            Debug.Log("3");
+            
             spawn = SpawnManager3();
         }
         else if (spawnManagerIndex == 3)
         {
-            Debug.Log("4");
+           
             spawn = SpawnManager4();
         }
 

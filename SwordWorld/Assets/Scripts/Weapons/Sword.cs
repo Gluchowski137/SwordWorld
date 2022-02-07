@@ -8,42 +8,41 @@ public class Sword : MonoBehaviour
     private Animator animator;
     private GameObject humanFps;
     private GameObject audioManager;
-    private AudioManager audio;
-    private BoxCollider collider;
+    private AudioManager swordAudio;
+    private BoxCollider swordCollider;
 
     public int damage = 5;
     void Start()
     {
         
         audioManager = GameObject.Find("AudioManager");
-        audio = audioManager.GetComponent<AudioManager>();
+        swordAudio = audioManager.GetComponent<AudioManager>();
         animator = GetComponent<Animator>();
         humanFps = GameObject.Find("HumanFPS");
         armsAnimator = humanFps.GetComponent<Animator>();
-        collider = GetComponent<BoxCollider>();
-        collider.enabled = false;
+        swordCollider = GetComponent<BoxCollider>();
+        swordCollider.enabled = false;
     }
     public void EnableCollider()
     {
-        collider.enabled = true;
+        swordCollider.enabled = true;
     }
     public void DIsableCollider()
     {
-        collider.enabled = false;
+        swordCollider.enabled = false;
     }
     public void PerformAttack() 
     {
-        audio.PlayAttackSound();
+        swordAudio.PlayAttackSound();
         armsAnimator.SetTrigger("BasicAttack");
         
-    }
+    } 
 
     private void OnTriggerEnter(Collider other)
     {
-        
         if (other.tag == "Enemy")
         {
-            audio.PlayHitSound();
+            swordAudio.PlayHitSound();
             other.GetComponent<IEnemy>().TakeDamage(damage);
         }
     }

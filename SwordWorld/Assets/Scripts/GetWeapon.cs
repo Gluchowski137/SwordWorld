@@ -21,9 +21,6 @@ public class GetWeapon : MonoBehaviour
 
     private Text getWeaponText;
 
-    //change this to bool later
-    private int closeHolders;
-
     private GameObject[] weaponHolders;
 
     public GameObject swordPrefab;
@@ -54,38 +51,43 @@ public class GetWeapon : MonoBehaviour
 
     private void Update()
     {
-        closeHolders = 0;
-        foreach(GameObject handler in weaponHolders)
+        EquipmentText();
+    }
+
+    private void EquipmentText()
+    {
+        if (canGetWeapon())
         {
-            if ((handler.transform.position - gameObject.transform.position).sqrMagnitude < 5f)
+            if (closestHandler.name == "SwordHandler" || closestHandler.name == "SwordHandler2")
             {
-                closestHandler = handler;
-                closeHolders++;            
-            }
-        }
-        if(closeHolders > 0)
-        {
-            if (closestHandler.name == "SwordHandler" || closestHandler.name == "SwordHandler2"){
-                getWeaponText.text = "To equip Sword click: E";
+                getWeaponText.text = "To equip Sword  click: E";
             }
             else
             {
                 getWeaponText.text = "To equip Spear click: E";
-            } 
+            }
             getWeaponText.gameObject.SetActive(true);
         }
         else
         {
             getWeaponText.gameObject.SetActive(false);
         }
-
-
-        
     }
-
+    private bool canGetWeapon()
+    {
+        foreach (GameObject handler in weaponHolders)
+        {
+            if ((handler.transform.position - gameObject.transform.position).sqrMagnitude < 5f)
+            {
+                closestHandler = handler;
+                return true;
+            }
+        }
+        return false;
+    }
     public void GetWeaponToHand()
     {
-        if (closeHolders > 0 && (closestHandler.name == "SwordHandler" || closestHandler.name == "SwordHandler2"))
+        if (canGetWeapon() && (closestHandler.name == "SwordHandler" || closestHandler.name == "SwordHandler2"))
         {
             if (isSpear)
             {
@@ -98,7 +100,7 @@ public class GetWeapon : MonoBehaviour
             }
             
         }
-        if (closeHolders > 0 && (closestHandler.name == "SpearHandler" || closestHandler.name == "SpearHandler2"))
+        if (canGetWeapon() && (closestHandler.name == "SpearHandler" || closestHandler.name == "SpearHandler2"))
         {
             if (isSwordAndShield)
             {
@@ -109,10 +111,6 @@ public class GetWeapon : MonoBehaviour
                 armsAnimator.SetTrigger("GetSpear");
             }
 
-        }
-        else
-        {
-            Debug.Log("Cant");
         }
            
     }

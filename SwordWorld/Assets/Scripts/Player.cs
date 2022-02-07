@@ -2,17 +2,42 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class Player : MonoBehaviour,IEnemy
 {
-    // Start is called before the first frame update
-    void Start()
+    private HealthBar healthbar;
+    private GameObject canvas;
+    private int maxHealth = 100, currenthealth;
+
+    
+    public void TakeDamage(int amount)
     {
-        
+        currenthealth -= amount;
+        healthbar.SetHealth(currenthealth);
+        if (currenthealth <= 0)
+        {
+            Die();
+        }
     }
 
-    // Update is called once per frame
+    void Start()
+    {
+        canvas = GameObject.Find("UI");
+        healthbar = canvas.GetComponentInChildren<HealthBar>();
+        SetHealth();
+    }
+
     void Update()
     {
         
     }
+    void Die()
+    {
+        Debug.Log("DEAD!");
+    }
+    void SetHealth()
+    {
+        currenthealth = maxHealth;
+        healthbar.SetMaxHEalth(maxHealth);
+    }
+
 }
