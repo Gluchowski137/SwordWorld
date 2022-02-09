@@ -38,10 +38,14 @@ public class GetWeapon : MonoBehaviour
     public Spear spear;
     public Shield shield;
 
+    private GameObject audioManager;
+    private AudioManager playerAudio;
+
 
 
     private void Start()
     {
+        GetAudioManager();
         armsAnimator = GetComponentInChildren<Animator>();
         weaponHolders = GameObject.FindGameObjectsWithTag("WeaponHolder");
         canvas = GameObject.Find("UI");
@@ -73,6 +77,12 @@ public class GetWeapon : MonoBehaviour
             getWeaponText.gameObject.SetActive(false);
         }
     }
+    void GetAudioManager()
+    {
+
+        audioManager = GameObject.Find("AudioManager");
+        playerAudio = audioManager.GetComponent<AudioManager>();
+    }
     private bool canGetWeapon()
     {
         foreach (GameObject handler in weaponHolders)
@@ -96,6 +106,7 @@ public class GetWeapon : MonoBehaviour
 
             if (!isSwordAndShield)
             {
+                playerAudio.PlayeGetWeapon();
                 armsAnimator.SetTrigger("GetSword");
             }
             
@@ -108,6 +119,7 @@ public class GetWeapon : MonoBehaviour
             }
             if (!isSpear)
             {
+                playerAudio.PlayeGetWeapon();
                 armsAnimator.SetTrigger("GetSpear");
             }
 

@@ -33,7 +33,6 @@ public class Sword : MonoBehaviour
     }
     public void PerformAttack() 
     {
-        swordAudio.PlayAttackSound();
         armsAnimator.SetTrigger("BasicAttack");
         
     } 

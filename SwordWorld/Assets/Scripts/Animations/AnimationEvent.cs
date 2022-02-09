@@ -5,12 +5,16 @@ using UnityEngine;
 public class AnimationEvent : MonoBehaviour
 {
     private GetWeapon getWeapon;
+    private GameObject audioManager;
+    private AudioManager playSound;
     private void Start()
     {
+        GetAudioManager();
         getWeapon = GetComponentInParent<GetWeapon>();
     }
     public void EnableSwordCollider()
     {
+        playSound.PlayAttackSound();
         getWeapon.sword.EnableCollider();
     }
     public void DisableSwordCollider()
@@ -19,6 +23,7 @@ public class AnimationEvent : MonoBehaviour
     }
     public void EnableSpearCollider()
     {
+        playSound.PlayAttackSound();
         getWeapon.spear.EnableCollider();
     }
     public void DisableSpearCollider()
@@ -66,5 +71,11 @@ public class AnimationEvent : MonoBehaviour
             Destroy(getWeapon.spearInHand);
 
         }
+    }
+    void GetAudioManager()
+    {
+
+        audioManager = GameObject.Find("AudioManager");
+        playSound = audioManager.GetComponent<AudioManager>();
     }
 }

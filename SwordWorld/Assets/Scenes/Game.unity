@@ -584,6 +584,8 @@ MonoBehaviour:
   attackSound: {fileID: 8300000, guid: fdc99a142f5dd66468d5300391fe5990, type: 3}
   hitSound: {fileID: 8300000, guid: 1bf372726e8bb7b49939f5347a9671be, type: 3}
   explosionSound: {fileID: 8300000, guid: a7bc20065118cea458851788a76f65f0, type: 3}
+  playerGetHit: {fileID: 8300000, guid: 26c1ca20c00ea3841b21f1cd46b173f0, type: 3}
+  getWeapon: {fileID: 8300000, guid: f8e33894070ba474dad58bb7a2988077, type: 3}
 --- !u!4 &1174056102
 Transform:
   m_ObjectHideFlags: 0

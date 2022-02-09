@@ -7,10 +7,11 @@ public class AudioManager : MonoBehaviour
     public AudioClip attackSound;
     public AudioClip hitSound;
     public AudioClip explosionSound;
+    public AudioClip playerGetHit;
+    public AudioClip getWeapon;
 
     private AudioSource audioSource;
    
-    // Start is called before the first frame update
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
@@ -27,5 +28,13 @@ public class AudioManager : MonoBehaviour
     public void PlayExplodeSound()
     {
         audioSource.PlayOneShot(explosionSound,1f);
+    }
+    public void PlayPlayerGotHit()
+    {
+        audioSource.PlayOneShot(playerGetHit, 1f);
+    }
+    public void PlayeGetWeapon()
+    {
+        audioSource.PlayOneShot(getWeapon, 1f);
     }
 }
