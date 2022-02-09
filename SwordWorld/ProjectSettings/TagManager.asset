@@ -10,14 +10,15 @@ TagManager:
   - WeaponHolder
   - Shield
   - PlayerArms
+  - Gate
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - WeaponHolders
   - Water
   - UI
-  - 
+  - Walls
   - 
   - 
   - 

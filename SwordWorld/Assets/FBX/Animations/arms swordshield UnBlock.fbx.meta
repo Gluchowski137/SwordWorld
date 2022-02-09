@@ -69,7 +69,7 @@ ModelImporter:
       curves: []
       events:
       - time: 0
-        functionName: DIsableShieldCollider
+        functionName: DisableShieldCollider
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
