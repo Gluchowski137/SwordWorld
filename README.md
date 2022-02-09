@@ -1,2 +1,3 @@
 # SwordWorld
- Game about sword with magic elements
+ Gladiator game
+ 
